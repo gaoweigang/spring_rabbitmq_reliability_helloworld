@@ -80,21 +80,5 @@ public class RabbitMQConfig {
 		MQAccessBuilder mqAccessBuilder = new MQAccessBuilder(connectionFactory());
 		return mqAccessBuilder.buildMessageSender(userExchangeName, userQueueName, userRouting);
 	}
-	
-	
-	
-	/******************message listener************************************************************/
-	/**
-	 * 监听器配置
-	 */
-	@Bean
-	public RabbitListenerContainerFactory<?> rabbitListenerContainerFactory(){
-		SimpleRabbitListenerContainerFactory rabbitListenerContainerFactory = new SimpleRabbitListenerContainerFactory();
-		rabbitListenerContainerFactory.setConnectionFactory(connectionFactory());
-		rabbitListenerContainerFactory.setConcurrentConsumers(1);
-		rabbitListenerContainerFactory.setMaxConcurrentConsumers(10);
-		return rabbitListenerContainerFactory;
-	}
-	
 
 }
